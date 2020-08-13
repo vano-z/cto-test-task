@@ -1,0 +1,55 @@
+{% load static %}
+
+<div class="bg-light border border-dark rounded mt-4">
+    <img src="{% static 'img/64x64.png' %}" class="rounded float-left mt-3 ml-2" alt="avatar in post">
+    <h4 class="mt-2"><a class="ml-3" href="{% url 'question' question.id %}">{{ question.title }}</a></h4>
+    <p style="margin-left: 90px">
+        {{ question.definition }}
+    </p>
+
+    {% if is_like == 1 %}
+    <button type="button" onclick="rate({{ question.id }}, true)" class="btn ml-2 mb-2" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/like24.png' %}" alt="like">
+    </button>
+    <div id="rating_{{ question.id }}" class="ml-4">
+        <a> {{ question.rating }} </a>
+    </div>
+    <button type="button" onclick="rate({{ question.id }}, false)" class="btn ml-2 mb-2" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/dislike24.png' %}" alt="dislike">
+    </button>
+
+    {% elif is_like == -1 %}
+
+    <button type="button" onclick="rate({{ question.id }}, true)" class="btn ml-2 mb-2" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/like24.png' %}" alt="like">
+    </button>
+    <div id="rating_{{ question.id }}" class="ml-4">
+        <a> {{ question.rating }} </a>
+    </div>
+    <button type="button" onclick="rate({{ question.id }}, false)" class="btn ml-2 mb-2" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/dislike24.png' %}" alt="dislike">
+    </button>
+
+    {% else  %}
+
+        <button type="button" onclick="rate({{ question.id }}, true)" class="btn ml-2 mb-2" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/like24.png' %}" alt="like">
+    </button>
+    <div id="question-rating-{{ question.id }}" class="ml-4">
+        <a> {{ question.rating }} </a>
+    </div>
+    <button type="button" onclick="rate({{ question.id }}, false)" class="btn ml-2 mb-2" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/dislike24.png' %}" alt="dislike">
+    </button>
+    {% endif %}
+
+{#    <a class="ml-3" href="#">Answer(3)</a>#}
+    <span class="ml-2">
+        <b>Tags: </b>
+            {% for tag in question.tags.all %}
+                <a href="{% url 'tag' tag %}">#{{ tag }}</a>
+            {% endfor %}
+        <b>Pub date: </b>
+            {{ question.pub_date }}
+    </span>
+</div>

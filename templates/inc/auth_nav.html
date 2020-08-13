@@ -1,0 +1,12 @@
+{% load static %}
+
+{#<img src="{% static 'img/90x90.jpg' %}" class="rounded float-right mr-3" alt="avatar90">#}
+<img src="/media/{{ user.avatar }}" class="rounded float-right mr-3" alt="avatar90">
+
+        <p class="lead">
+        <ul class="list-inline mt-3">
+            <li class="font-italic font-weight-bold">{{ user.username }}</li>
+            <li class="list-inline-item"><a href="{% url 'settings' %}"><strong>settings</strong></a></li>
+            <li class="list-inline-item"><a href="{% url 'logout' %}"><strong>logout</strong></a></li>
+        </ul>
+        </p>

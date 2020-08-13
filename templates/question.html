@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+<div class="mt-4">
+    <img src="{% static 'img/128x128.jpg' %}" alt="avatar128" class="rounded mr-4 float-left">
+    <h2>{{ question_object.title }}</h2>
+    <p>
+        {{ question_object.definition }}
+    </p>
+    <button type="button" class="btn  ml-2 mb-2" data-toggle="button" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/like24.png' %}" alt="like">
+    </button>
+     <button type="button" class="btn  mb-2" data-toggle="button" aria-pressed="false" autocomplete="off">
+        <img src="{% static 'img/dislike24.png' %}" alt="like">
+    </button>
+    <span class="ml-5"><b>Tags:</b>
+        {% for tag in question_object.tags.all %}
+                <a href="{% url 'tag' tag %}">#{{ tag }}</a>
+        {% endfor %}
+        <b>pub date:</b>{{ question_object.pub_date }}
+    </span>
+    <hr>
+
+
+    {% for obj in page_obj %}
+        {% include 'inc/answer.html' %}
+    {% endfor %}
+
+    {% include 'inc/paginator.html' %}
+
+    <hr>
+
+    {% if request.user.is_authenticated %}
+        <form method="POST" novalidate>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-outline-dark mb-2">Answer</button>
+        {% endbuttons %}
+    {% else %}
+        <p> You cant not answer! <a href="{% url 'register' %}">Signup</a> or <a href="{% url 'login' %}">Signin</a></p>
+    {% endif %}
+    </form>
+    </div>
+
+
+
+{% endblock content %}

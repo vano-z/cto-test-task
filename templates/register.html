@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+        <ul class="list-inline mt-4">
+            <h2 class="list-inline-item">Registration</h2>
+        </ul>
+
+        <form method="POST" novalidate>
+
+{#            <div class="form-group">#}
+{#                <label for="formControlLoginInput">Login</label>#}
+{#                <input type="text" class="form-control" id="formControlLoginInput" placeholder="dr_pepper">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label for="formControlEmailInput">Email address</label>#}
+{#                <input type="email" class="form-control" id="formControlEmailInput" placeholder="dr.pepper@mail.ru">#}
+{#                <div class="valid-feedback">#}
+{#                    Sorry, this email address already registred!#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label for="formControlNickNameInput">NickName</label>#}
+{#                <input type="text" class="form-control" id="formControlNickNameInput" placeholder="Dr.Pepper">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label for="formControlPassword">Password</label>#}
+{#                <input type="text" class="form-control" id="formControlPassword" placeholder="******">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label for="formControlRepeatPassword">Repeat password</label>#}
+{#                <input type="text" class="form-control" id="formControlRepeatPassword" placeholder="******">#}
+{#            </div>#}
+{##}
+{#            <div class="form-group">#}
+{#                <label for="formControlAvatar">Upload avatar</label><br>#}
+{#                <img class="float-left mb-3" src="../static/img/128x128.jpg" alt="avatar128">#}
+{#                <input type="file" class="form-control-file" id="formControlAvatar">#}
+{#            </div>#}
+{##}
+{#            <button type="button" class="btn btn-outline-dark mt-2">Register!</button>#}
+
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+            <button type="submit" class="btn btn-outline-dark mb-2">Login!</button>
+            {% endbuttons %}
+
+        </form>
+
+{% endblock content %}

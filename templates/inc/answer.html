@@ -1,0 +1,19 @@
+{% load static %}
+
+<div class="border border-dark rounded p-3 m-3">
+        <img class="float-left ml-2 mr-5" src="{% static 'img/64x64.png' %}" alt="avatar64">
+        <p>
+            {{ obj.text }}
+        </p>
+
+        <button type="button" class="btn  ml-2 " data-toggle="button" aria-pressed="false" autocomplete="off">
+            <img src="{% static 'img/like.png' %}" alt="like">
+        </button>
+
+        <div class="form-check ml-3">
+        <input class="form-check-input" type="checkbox" value="" id="checkCorrect">
+        <label class="form-check-label" for="checkCorrect">
+            Correct!
+        </label>
+        </div>
+    </div>

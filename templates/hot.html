@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <ul class="list-inline pt-2">
+        <li class="list-inline-item"><h2 class="pt-4">Hot questions</h2></li>
+        <li class="list-inline-item"><h4><a href="{% url 'index' %}">New Questions</a></h4></li>
+    </ul>
+
+    {% for question in page_obj %}
+        {% include 'inc/preview_question.html' %}
+    {% endfor %}
+
+    {% include 'inc/paginator.html' %}
+
+{% endblock content %}

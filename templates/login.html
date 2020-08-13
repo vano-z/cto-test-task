@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+    <form class="mt-4" method="POST" novalidate>
+
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-outline-dark mb-2">Login!</button>
+    {% endbuttons %}
+    <a href="{% url 'register' %}">create new account</a>
+
+    </form>
+{% endblock content %}

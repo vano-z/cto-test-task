@@ -1,0 +1,20 @@
+<div class="col-4 mt-5">
+    <div>
+        <div class="alert mt-5">
+            <h2>Popular tags</h2>
+            <div>
+                {% for tag in tags %}
+                <a href="{% url 'tag' tag %}">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+            <h2 class="mt-5">Best Members</h2>
+            <ul class="list-unstyled">
+                <li><a href="#">Mr. Freeman</a></li>
+                <li><a href="#">Dr. House</a></li>
+                <li><a href="#">Bender</a></li>
+                <li><a href="#">Queen Victoria</a></li>
+                <li><a href="#">V. Pupkin</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+{% load static %}
+
+<nav class="navbar fixed-top position-fixed navbar-light bg-light py-1 px-1 shadow">
+
+    <div class="col-4">
+        <a class="navbar-brand ml-5" href="{% url 'index' %}"><h2>AskPupkin</h2></a>
+    </div>
+
+    <div class="col-6">
+        <form class="form-inline">
+            <input class="form-control form-control-lg mr-3 w-50" type="text" placeholder="Search">
+            <a href="{% url 'ask' %}"><button type="button" class="btn btn-outline-dark">Ask!</button></a>
+        </form>
+    </div>
+
+
+
+    {% if request.user.is_authenticated %}
+    <div class="col-2 form-inline">
+        {% include 'inc/auth_nav.html' %}
+    </div>
+    {% else %}
+    <div class="col-2 form-inline">
+        {% include 'inc/unauth_nav.html' %}
+    </div>
+    {% endif %}
+
+
+</nav>
